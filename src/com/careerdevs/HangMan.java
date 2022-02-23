@@ -40,7 +40,7 @@ public class HangMan {
         char guessedLetter = usersGuess.charAt(0);
         // System.out.println(guessedLetter);
         System.out.println(letters.length);
-        for (int i = 0; 0 < letters.length; i++) {
+        for (int i = 0; i < letters.length; i++) {
             System.out.print(letters[i] + " ");
         }
 
