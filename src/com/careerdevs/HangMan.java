@@ -1,14 +1,17 @@
 package com.careerdevs;
 
 
-import jdk.swing.interop.SwingInterOpUtils;
+import java.util.ArrayList;
 
 public class HangMan {
+
+    //Array;
 
     public static String[] playableWords = new String[]{
             "guessing", "these", "words",
             "is", "very", "easy"
     };
+
 
     public static void startMenu() {
         boolean on = true;
@@ -29,21 +32,27 @@ public class HangMan {
         promptUser();
     }
 
-    public static void promptUser() {
+    public static char[] getWord() {
         int num = (int) (Math.random() * (7 - 1) + 1);
         String word = playableWords[num - 1];
         char[] letters = word.toCharArray();
-        System.out.println(word);
-        String usersGuess = UI.readString("Please enter a letter");
-        char guessedLetter = usersGuess.charAt(0);
-
-        for (int i = 0; i < letters.length; i++) {
-            if(letters[i] == guessedLetter){
-                System.out.println(guessedLetter);
-            }
-
-
-        }
+        return letters;
     }
 
+    public static void promptUser() {
+        char[] theWord = getWord();
+        System.out.println(theWord);
+        boolean end = true;
+        while (end) {
+            int count = 10;
+            String usersGuess = UI.readString("Please enter a letter");
+            char guessedLetter = usersGuess.charAt(0);
+            // System.out.println(getWord());
+            for (char letter : theWord) {
+                if (letter == guessedLetter) {
+                    System.out.println(guessedLetter);
+                }
+            }
+        }
+    }
 }
