@@ -31,8 +31,6 @@ public class HangMan {
 
     public static void promptUser() {
         int num = (int) (Math.random() * (7 - 1) + 1);
-
-        // System.out.println(playableWords[num -1 ]);
         String word = playableWords[num - 1];
         char[] letters = word.toCharArray();
         System.out.println(word);
@@ -41,7 +39,7 @@ public class HangMan {
 
         for (int i = 0; i < letters.length; i++) {
             if(letters[i] == guessedLetter){
-                System.out.println("Hit");
+                System.out.println(guessedLetter);
             }
 
 
