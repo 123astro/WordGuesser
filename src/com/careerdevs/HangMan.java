@@ -44,7 +44,6 @@ public class HangMan {
         System.out.println(theWord);
         boolean end = true;
         while (end) {
-            int count = 10;
             String usersGuess = UI.readString("Please enter a letter");
             char guessedLetter = usersGuess.charAt(0);
             // System.out.println(getWord());
