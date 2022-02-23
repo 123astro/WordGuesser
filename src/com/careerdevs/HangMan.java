@@ -40,20 +40,27 @@ public class HangMan {
     }
 
     public static void promptUser() {
-        System.out.println("Word Guesser\n" + "STATS:\n" + "Incorrect Guesses Made: ");
         char[] theWord = getWord();
         System.out.println(theWord);
         boolean end = true;
+        int count = 0;
         while (end) {
-            String usersGuess = UI.readString("Please enter a letter");
+
+            System.out.println("Word Guesser\n" + "STATS:\n" + "Incorrect Guesses Made: " + count + "/7");
+            for(int i = 0; i < theWord.length; ++i){
+                System.out.print("_" + " ");
+            }
+            String usersGuess = UI.readString("\nPlease enter a letter");
             char guessedLetter = usersGuess.charAt(0);
             boolean hasLetter = false;
             for (char letter : theWord) {
                 if (letter == guessedLetter) {
-                  hasLetter = true;
-                    }
+                    hasLetter = true;
                 }
-            System.out.println(hasLetter);
+            }
+            if (!hasLetter) {
+                count++;
             }
         }
     }
+}
