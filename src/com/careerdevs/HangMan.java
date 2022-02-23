@@ -53,9 +53,11 @@ public class HangMan {
             String usersGuess = UI.readString("\nPlease enter a letter");
             char guessedLetter = usersGuess.charAt(0);
             boolean hasLetter = false;
-            for (char letter : theWord) {
-                if (letter == guessedLetter) {
+            for (int i = 0; i < theWord.length; ++i) {
+                if (theWord[i] == guessedLetter) {
                     hasLetter = true;
+                    int index = theWord[i];
+                    System.out.println(index);
                 }
             }
             if (!hasLetter) {
