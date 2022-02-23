@@ -35,15 +35,17 @@ public class HangMan {
         // System.out.println(playableWords[num -1 ]);
         String word = playableWords[num - 1];
         char[] letters = word.toCharArray();
-        //System.out.println(word);
+        System.out.println(word);
         String usersGuess = UI.readString("Please enter a letter");
         char guessedLetter = usersGuess.charAt(0);
-        // System.out.println(guessedLetter);
-        System.out.println(letters.length);
+
         for (int i = 0; i < letters.length; i++) {
-            System.out.print(letters[i] + " ");
+            if(letters[i] == guessedLetter){
+                System.out.println("Hit");
+            }
+
+
         }
-
     }
-}
 
+}
