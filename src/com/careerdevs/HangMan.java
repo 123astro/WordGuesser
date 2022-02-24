@@ -42,6 +42,7 @@ public class HangMan {
         int num = (int) (Math.random() * (7 - 1) + 1);
         String word = playableWords[num - 1];
         theWord = word.toCharArray();
+        System.out.println(theWord);
         return theWord;
     }
 
@@ -55,6 +56,7 @@ public class HangMan {
             char guessedLetter = usersGuess.charAt(0);
             for (int i = 0; i < allCharsPicked.size(); ++i) {
                 if (guessedLetter == allCharsPicked.get(i)) {
+                    System.out.println("\nPlease pick a letter that hasn't been used already.");
                     promptUser();
                 }
             }
