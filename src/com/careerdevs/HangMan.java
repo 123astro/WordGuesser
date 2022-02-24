@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class HangMan {
 
-    //Array;
+    public static ArrayList<Character> correctChars = new ArrayList<>();
+    public static ArrayList<Character> allCharsPicked = new ArrayList<>();
 
     public static String[] playableWords = new String[]{
             "guessing", "these", "words",
@@ -42,26 +43,42 @@ public class HangMan {
     public static void promptUser() {
         char[] theWord = getWord();
         System.out.println(theWord);
-        boolean end = true;
-        int count = 0;
-        while (end) {
-
-            System.out.println("Word Guesser\n" + "STATS:\n" + "Incorrect Guesses Made: " + count + "/7");
-            for(int i = 0; i < theWord.length; ++i){
-                System.out.print("_" + " ");
-            }
-            String usersGuess = UI.readString("\nPlease enter a letter");
-            char guessedLetter = usersGuess.charAt(0);
-            boolean hasLetter = false;
-            for (int i = 0; i < theWord.length; ++i) {
-                if (theWord[i] == guessedLetter) {
-                    hasLetter = true;
-                    int index = theWord[i];
-                    System.out.println(index);
+        boolean start = true;
+        while (start) {
+            boolean end = true;
+            int count = 0;
+            while (end) {
+                System.out.println("Word Guesser\n" + "STATS:\n" + "Incorrect Guesses Made: " + count + "/7");
+                for (int i = 0; i < theWord.length; ++i) {
+                    System.out.print("_" + " ");
                 }
-            }
-            if (!hasLetter) {
-                count++;
+                String usersGuess = UI.readString("\nPlease enter a letter");
+                char guessedLetter = usersGuess.charAt(0);
+                for (int i = 0; i < allCharsPicked.size(); ++i) {
+                    if (guessedLetter == allCharsPicked.get(i)) {
+                        System.out.println("hit");
+                        end = false;
+                        break;
+                    }
+                }
+                allCharsPicked.add(guessedLetter);
+                System.out.println("All picked letters: " + allCharsPicked);
+                boolean hasLetter = false;
+                for (int i = 0; i < theWord.length; ++i) {
+                    if (theWord[i] == guessedLetter) {
+                        correctChars.add(theWord[i]);
+                        hasLetter = true;
+                    }
+                }
+                if (!hasLetter) {
+                    count++;
+                    if (count == 7) {
+                        System.out.println("You have reached the max number of incorrect guesses. Thanks for playing you " +
+                                "loser.");
+                        startMenu();
+                    }
+                }
+                System.out.println("Correct letters that have been picked: " + correctChars);
             }
         }
     }
