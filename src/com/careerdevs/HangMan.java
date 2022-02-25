@@ -48,8 +48,8 @@ public class HangMan {
             System.out.println("\n******Word Guesser******\n" + "Incorrect Guesses Made: " + count + "/7");
             String usersGuess = UI.readString("\nPlease enter a letter");
             char guessedLetter = usersGuess.toLowerCase(Locale.ROOT).charAt(0);
-            for (int i = 0; i < allCharsPicked.size(); ++i) {
-                if (guessedLetter == allCharsPicked.get(i)) {
+            for (Character character : allCharsPicked) {
+                if (guessedLetter == character) {
                     System.out.println("\nPlease pick a letter that hasn't been used already.");
                     promptUser();
                 }
