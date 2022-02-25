@@ -12,10 +12,10 @@ public class HangMan {
     public static char[] theWord;
     public static int count;
 
-    public static String[] playableWords = new String[]{
-            "guessing", "these", "words",
-            "is", "very", "easy"
-    };
+//    public static String[] playableWords = new String[]{
+//            "guessing", "these", "words",
+//            "is", "very", "easy"
+//    };
 
     public static void startMenu() {
         boolean on = true;
@@ -39,9 +39,10 @@ public class HangMan {
 
     public static void getWord() {
         count = 0;
-        int num = (int) (Math.random() * (playableWords.length) + 1);
-        String word = playableWords[num - 1];
+        int num = (int) (Math.random() * (PlayableWords.playableWords.length) + 1);
+        String word = PlayableWords.playableWords[num - 1];
         theWord = word.toCharArray();
+        System.out.println("\nThe New Word Size: " + theWord.length);
         //System.out.println(theWord);
     }
 
@@ -84,12 +85,14 @@ public class HangMan {
             if (!hasLetter) {
                 count++;
                 if (count == 7) {
-                    System.out.println("You have reached the max number of incorrect guesses. Thanks for playing you " +
-                            "loser!!!");
+                    System.out.println("You have reached the max number of incorrect guesses. You lose.  Thanks for " +
+                            "playing!! ");
+                    System.out.println("The word was: " + theWord);
                     startMenu();
                 }
             }
-            System.out.println("\nCorrect letter(s) that have been picked in there proper location(s): \n");
+            System.out.println("\nBelow are the correct letter(s) that have been picked in there proper location(s): " +
+                    "\n");
             for (char character : correctChars){
                 System.out.print(character);
             }
