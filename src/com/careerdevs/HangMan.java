@@ -64,17 +64,27 @@ public class HangMan {
             allCharsPicked.add(guessedLetter);
             System.out.println("All picked letters: " + allCharsPicked);
             boolean hasLetter = false;
-            for (int j = 0; j < theWord.length; ++j) {
-                if (theWord[j] == guessedLetter) {
-                    correctChars.add(j,guessedLetter);
-                    System.out.print(theWord[j]);
-                } else {
-                   correctChars.add(j, '_');
-                   System.out.print('_');
+            if (correctChars.size() <= 0) {
+                for (int j = 0; j < theWord.length; ++j) {
+                    if (theWord[j] == guessedLetter) {
+                        hasLetter = true;
+                        correctChars.add(j, guessedLetter);
+                        System.out.print(theWord[j]);
+                    } else {
+                        correctChars.add(j, '_');
+                        System.out.print('_');
+                    }
                 }
-                hasLetter = true;
             }
 
+            if (correctChars.size() > 1) {
+                for (int j = 0; j < theWord.length; ++j) {
+                    if (theWord[j] == guessedLetter) {
+                        hasLetter = true;
+                        correctChars.add(j, guessedLetter);
+                    }
+                }
+            }
 
             if (!hasLetter) {
                 count++;
@@ -84,7 +94,7 @@ public class HangMan {
                     startMenu();
                 }
             }
-             System.out.println("\nCorrect letters that have been picked: " + correctChars);
+            System.out.println("\nCorrect letters that have been picked: \n" + correctChars);
         }
     }
 }
