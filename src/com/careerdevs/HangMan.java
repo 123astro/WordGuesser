@@ -58,6 +58,7 @@ public class HangMan {
             allCharsPicked.add(guessedLetter);
             System.out.println("********** Picked letters: " + allCharsPicked + " *************");
             boolean hasLetter = false;
+
             if (correctChars.size() > 0) {
                 for (int j = 0; j < theWord.length; ++j) {
                     if (theWord[j] == guessedLetter) {
@@ -66,6 +67,7 @@ public class HangMan {
                     }
                 }
             }
+
             if (correctChars.size() == 0) {
                 for (int j = 0; j < theWord.length; ++j) {
                     if (theWord[j] == guessedLetter) {
@@ -76,6 +78,7 @@ public class HangMan {
                     }
                 }
             }
+
             checkForWinner();
             if (!hasLetter) {
                 count++;
