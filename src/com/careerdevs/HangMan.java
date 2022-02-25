@@ -37,7 +37,7 @@ public class HangMan {
 
     public static void getWord() {
         count = 0;
-        int num = (int) (Math.random() * (7 - 1) + 1);
+        int num = (int) (Math.random() * (playableWords.length) + 1);
         String word = playableWords[num - 1];
         theWord = word.toCharArray();
         System.out.println(theWord);
