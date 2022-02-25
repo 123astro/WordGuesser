@@ -12,11 +12,6 @@ public class HangMan {
     public static char[] theWord;
     public static int count;
 
-//    public static String[] playableWords = new String[]{
-//            "guessing", "these", "words",
-//            "is", "very", "easy"
-//    };
-
     public static void startMenu() {
         boolean on = true;
         while (on) {
