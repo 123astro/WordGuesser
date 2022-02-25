@@ -5,8 +5,8 @@ import java.util.Locale;
 
 public class HangMan {
 
-    public static ArrayList<Character> correctChars = new ArrayList<>();
-    public static ArrayList<Character> allCharsPicked = new ArrayList<>();
+    public static ArrayList<Character> correctChars;
+    public static ArrayList<Character> allCharsPicked;
 
     public static boolean end = true;
     public static char[] theWord;
@@ -31,6 +31,8 @@ public class HangMan {
     }
 
     public static void startGame() {
+        correctChars = new ArrayList<>(); // needed a new arraylist to reset on every new start
+        allCharsPicked = new ArrayList<>();
         getWord();
         promptUser();
     }
@@ -51,6 +53,9 @@ public class HangMan {
             for (Character character : allCharsPicked) {
                 if (guessedLetter == character) {
                     System.out.println("\nPlease pick a letter that hasn't been used already.");
+                    for (char characterA : correctChars){
+                        System.out.print(characterA);
+                    }
                     promptUser();
                 }
             }
@@ -98,7 +103,11 @@ public class HangMan {
                     return -1;
                 }
             }
+            for (char character : correctChars){
+                System.out.print(character);
+            }
             System.out.println("\n****************You Win!**********************");
+
             startMenu();
         }
         return -1;
