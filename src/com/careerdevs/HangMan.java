@@ -1,6 +1,7 @@
 package com.careerdevs;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class HangMan {
 
@@ -47,7 +48,7 @@ public class HangMan {
         while (end) {
             System.out.println("\nWord Guesser\n" + "STATS:\n" + "Incorrect Guesses Made: " + count + "/7");
             String usersGuess = UI.readString("\nPlease enter a letter");
-            char guessedLetter = usersGuess.charAt(0);
+            char guessedLetter = usersGuess.toLowerCase(Locale.ROOT).charAt(0);
             for (int i = 0; i < allCharsPicked.size(); ++i) {
                 if (guessedLetter == allCharsPicked.get(i)) {
                     System.out.println("\nPlease pick a letter that hasn't been used already.");
@@ -55,7 +56,7 @@ public class HangMan {
                 }
             }
             allCharsPicked.add(guessedLetter);
-            System.out.println("All picked letters: " + allCharsPicked);
+            System.out.println("********** Picked letters: " + allCharsPicked + " *************");
             boolean hasLetter = false;
             if (correctChars.size() > 0) {
                 for (int j = 0; j < theWord.length; ++j) {
@@ -95,7 +96,7 @@ public class HangMan {
                     return -1;
                 }
             }
-            System.out.println("You Win!");
+            System.out.println("****************You Win!**********************");
             startMenu();
         }
         return -1;
