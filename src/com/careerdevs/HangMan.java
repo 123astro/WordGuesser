@@ -1,6 +1,5 @@
 package com.careerdevs;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class HangMan {
@@ -21,10 +20,8 @@ public class HangMan {
     public static void startMenu() {
         boolean on = true;
         while (on) {
-
             System.out.println("\n1) Start Game" + "\n2) Exit"
             );
-
             int input = UI.readInt("Please enter a selection", 1, 2);
             switch (input) {
                 case 1 -> startGame();
@@ -38,13 +35,12 @@ public class HangMan {
         promptUser();
     }
 
-    public static char[] getWord() {
+    public static void getWord() {
         count = 0;
         int num = (int) (Math.random() * (7 - 1) + 1);
         String word = playableWords[num - 1];
         theWord = word.toCharArray();
         System.out.println(theWord);
-        return theWord;
     }
 
     public static void promptUser() {
@@ -79,6 +75,7 @@ public class HangMan {
                     }
                 }
             }
+            checkForWinner();
             if (!hasLetter) {
                 count++;
                 if (count == 7) {
@@ -90,4 +87,19 @@ public class HangMan {
             System.out.println("\nCorrect letters that have been picked: \n" + correctChars);
         }
     }
+
+    public static int checkForWinner() {
+        if (correctChars.size() > 0) {
+            for (Character correctChar : correctChars) {
+                if (correctChar.equals('_')) {
+                    return -1;
+                }
+            }
+            System.out.println("You Win!");
+            startMenu();
+        }
+        return -1;
+    }
 }
+
+
