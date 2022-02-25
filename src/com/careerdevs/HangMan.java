@@ -17,7 +17,6 @@ public class HangMan {
             "is", "very", "easy"
     };
 
-
     public static void startMenu() {
         boolean on = true;
         while (on) {
@@ -46,7 +45,7 @@ public class HangMan {
 
     public static void promptUser() {
         while (end) {
-            System.out.println("\nWord Guesser\n" + "STATS:\n" + "Incorrect Guesses Made: " + count + "/7");
+            System.out.println("\n******Word Guesser******\n" + "Incorrect Guesses Made: " + count + "/7");
             String usersGuess = UI.readString("\nPlease enter a letter");
             char guessedLetter = usersGuess.toLowerCase(Locale.ROOT).charAt(0);
             for (int i = 0; i < allCharsPicked.size(); ++i) {
