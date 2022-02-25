@@ -94,11 +94,11 @@ public class HangMan {
         }
     }
 
-    public static int checkForWinner() {
+    public static void checkForWinner() {
         if (correctChars.size() > 0) {
             for (Character correctChar : correctChars) {
                 if (correctChar.equals('_')) {
-                    return -1;
+                    return;
                 }
             }
             for (char character : correctChars){
@@ -108,7 +108,6 @@ public class HangMan {
 
             startMenu();
         }
-        return -1;
     }
 }
 
