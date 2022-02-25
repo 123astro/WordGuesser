@@ -5,12 +5,9 @@ import java.util.ArrayList;
 
 public class HangMan {
 
-    public static char[] wordArray = new char[]{};
     public static ArrayList<Character> correctChars = new ArrayList<>();
-    ;
     public static ArrayList<Character> allCharsPicked = new ArrayList<>();
 
-    public static int index;
     public static boolean end = true;
     public static char[] theWord;
     public static int count;
@@ -72,21 +69,16 @@ public class HangMan {
                     }
                 }
             }
-            System.out.println("\n" + correctChars);
             if (correctChars.size() == 0) {
                 for (int j = 0; j < theWord.length; ++j) {
                     if (theWord[j] == guessedLetter) {
                         hasLetter = true;
                         correctChars.add(j, guessedLetter);
-                        System.out.print(theWord[j]);
                     } else {
                         correctChars.add(j, '_');
-                        System.out.print('_');
                     }
                 }
             }
-            System.out.println("\n" + correctChars);
-
             if (!hasLetter) {
                 count++;
                 if (count == 7) {
