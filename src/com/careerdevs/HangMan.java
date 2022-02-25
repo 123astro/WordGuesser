@@ -64,7 +64,16 @@ public class HangMan {
             allCharsPicked.add(guessedLetter);
             System.out.println("All picked letters: " + allCharsPicked);
             boolean hasLetter = false;
-            if (correctChars.size() <= 0) {
+            if (correctChars.size() > 0) {
+                for (int j = 0; j < theWord.length; ++j) {
+                    if (theWord[j] == guessedLetter) {
+                        hasLetter = true;
+                        correctChars.set(j, guessedLetter);
+                    }
+                }
+            }
+            System.out.println("\n" + correctChars);
+            if (correctChars.size() == 0) {
                 for (int j = 0; j < theWord.length; ++j) {
                     if (theWord[j] == guessedLetter) {
                         hasLetter = true;
@@ -76,15 +85,7 @@ public class HangMan {
                     }
                 }
             }
-
-            if (correctChars.size() > 1) {
-                for (int j = 0; j < theWord.length; ++j) {
-                    if (theWord[j] == guessedLetter) {
-                        hasLetter = true;
-                        correctChars.add(j, guessedLetter);
-                    }
-                }
-            }
+            System.out.println("\n" + correctChars);
 
             if (!hasLetter) {
                 count++;
