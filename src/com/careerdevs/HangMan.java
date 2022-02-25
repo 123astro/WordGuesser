@@ -80,11 +80,14 @@ public class HangMan {
                 count++;
                 if (count == 7) {
                     System.out.println("You have reached the max number of incorrect guesses. Thanks for playing you " +
-                            "loser.");
+                            "loser!!!");
                     startMenu();
                 }
             }
-            System.out.println("\nCorrect letters that have been picked: \n" + correctChars);
+            System.out.println("\nCorrect letter(s) that have been picked in there proper location(s): \n");
+            for (char character : correctChars){
+                System.out.print(character);
+            }
         }
     }
 
@@ -95,7 +98,7 @@ public class HangMan {
                     return -1;
                 }
             }
-            System.out.println("****************You Win!**********************");
+            System.out.println("\n****************You Win!**********************");
             startMenu();
         }
         return -1;
