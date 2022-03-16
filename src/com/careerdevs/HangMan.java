@@ -10,6 +10,7 @@ public class HangMan {
 
     public static boolean end = true;
     public static char[] theWord;
+    public static String word;
     public static int count;
 
     public static void startMenu() {
@@ -35,7 +36,7 @@ public class HangMan {
     public static void getWord() {
         count = 0;
         int num = (int) (Math.random() * (PlayableWords.playableWords.length) + 1);
-        String word = PlayableWords.playableWords[num - 1];
+        word = PlayableWords.playableWords[num - 1];
         theWord = word.toCharArray();
         System.out.println("\nThe New Word Size: " + theWord.length);
         //System.out.println(theWord);
@@ -85,7 +86,7 @@ public class HangMan {
                 if (count == 7) {
                     System.out.println("You have reached the max number of incorrect guesses. You lose.  Thanks for " +
                             "playing!! ");
-                    System.out.println("The word was: " + theWord);
+                    System.out.println("The word was: " + word);
                     startMenu();
                 }
             }
